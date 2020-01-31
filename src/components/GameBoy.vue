@@ -7,27 +7,61 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import * as PIXI from 'pixi.js';
-import { Container as PixiStage, Text, TextStyle} from 'pixi.js'
+import { Container as PixiStage, Text, TextStyle, Graphics, Application} from 'pixi.js'
+import {default as resources} from '../../lib/const/resource.config.js';
 
 @Component
 export default class GameBoy extends Vue {
+  protected actionArr: Array<any> = [];
+
   mounted() {
-    this.init();
+    this.init(resources);
+    this.actionArr = [];
   }
 
-  init() {
-    let gb: any = new PIXI.Application({
+  init(resources: any) {
+    let gb: Application = new PIXI.Application({
       width: 375,
-      height: 337
+      height: 600
     });
     let stage: PixiStage = gb.stage;
 
-    this.startMessageInit(stage);
+    this.initStartMessage(stage);
+    this.initLoader(gb, resources);
+    this.initGameLoop(gb);
     
     this.$el.appendChild(gb.view);
   }
 
-  private startMessageInit(stage: PixiStage) {
+  /*
+  * @desc: 初始化资源
+  */
+  private initLoader(gameboy: Application, resources: Array <string>, 
+    loadProgressHandler: any = (loader: any, resource: string) => {console.log(`loading args ${JSON.stringify(resource)}`)}, 
+    setupHanderler: any = (...args: []) => {console.log(`setup args ${JSON.stringify(args)}`)}) {
+    
+    if(resources && resources.length > 0) {
+      gameboy.loader.add(...resources)
+        .on('progress', loadProgressHandler)
+        .load(setupHanderler);
+    } else {
+      gameboy.loader.add(...resources)
+        .load(setupHanderler);
+    }
+
+  }
+
+  /*
+  * @desc: 动画循环
+  */
+  private initGameLoop(gameboy: Application){
+    gameboy
+  }
+
+  /*
+  * @desc: 背景文案
+  */
+  private initStartMessage(stage: PixiStage) {
     let textStyle: TextStyle = new TextStyle( {
       fontFamily: "Arial",
       fontSize: 36,
