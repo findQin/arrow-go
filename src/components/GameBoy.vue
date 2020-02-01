@@ -1,6 +1,5 @@
 <template>
-  <div id="gameboy">
-      
+  <div id="gameboy"> 
   </div>
 </template>
 
@@ -44,18 +43,16 @@ export default class GameBoy extends Vue {
       gameboy.loader.add(...resources)
         .on('progress', loadProgressHandler)
         .load(setupHanderler);
-    } else {
-      gameboy.loader.add(...resources)
-        .load(setupHanderler);
     }
-
   }
 
   /*
   * @desc: 动画循环
   */
   private initGameLoop(gameboy: Application){
-    gameboy
+    gameboy.ticker.add(delta => {
+      // console.log(delta);
+    });
   }
 
   /*
