@@ -7,7 +7,9 @@
 import { Component, Vue } from "vue-property-decorator";
 import * as PIXI from 'pixi.js';
 import { Container as PixiStage, Text, TextStyle, Graphics, Application} from 'pixi.js'
-import {default as resources} from '../../lib/const/resource.config.js';
+// import {default as resources} from '../../lib/const/resource.config.js';
+
+const resources: any = []; 
 
 @Component
 export default class GameBoy extends Vue {
