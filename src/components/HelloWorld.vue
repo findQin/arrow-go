@@ -5,14 +5,18 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import demo1 from "@/board/demo1";
+// import demo1 from "@/board/demo1";
+import demo2 from "@/board/demo2";
+// import demoA from "@/board/demoA.js";
 
 @Component
 export default class HelloWorld extends Vue {
   @Prop() private msg!: string;
 
   mounted() {
-    demo1();
+    // demo1();
+    demo2();
+    // demoA();
   }
 }
 </script>
