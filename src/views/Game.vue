@@ -1,17 +1,17 @@
 <template>
   <div class="game">
-    <GameBoy />
+    <Broad />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import GameBoy from "@/components/GameBoy.vue";
+import Broad from "@/components/Broad.vue";
 
 export default {
   name: "game",
   components: {
-    GameBoy
+    Broad
   }
 };
 </script>
