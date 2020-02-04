@@ -1,0 +1,39 @@
+{
+  "title": "Arrow Go",
+  "buttons": [
+    {
+      "type": "normal",
+      "text": "开始",
+      "click": {
+        "title": "Menu",
+        "buttons": [
+          {
+            "type": "normal", 
+            "text": "再点一下",
+            "click": "再点一下"
+          },
+          {
+            "type": "normal", 
+            "text": "点哪个呢",
+            "click": "点哪个呢"
+          },
+          {
+            "type": "normal", 
+            "text": "迷之点击",
+            "click": "迷之点击"
+          },
+          {
+            "type": "normal", 
+            "text": "你敢点嘛",
+            "click": "你敢点嘛"
+          }
+        ]
+      }
+    },
+    {
+      "type": "normal",
+      "text": "结束",
+      "click": "close"
+    }
+  ]
+}

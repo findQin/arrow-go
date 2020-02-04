@@ -15,7 +15,7 @@ export default class HelloWorld extends Vue {
 
   mounted() {
     // demo1();
-    demo2();
+    // demo2();
     // demoA();
   }
 }
