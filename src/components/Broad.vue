@@ -13,7 +13,11 @@ export default class Board extends Vue {
   protected actionArr: Array<any> = [];
 
   mounted() {
-    let gameboy: GameBoy = new GameBoy(375, 600);
+    let clientWidth: number = document.body.clientWidth;
+    let clientHeight: number = document.body.clientHeight;
+
+    let gameboy: GameBoy = new GameBoy(clientWidth / 3 * 2, clientWidth / 9 * 4);
+
     gameboy.init();
     this.$el.appendChild(gameboy.view);
     gameboy.play();
@@ -21,6 +25,6 @@ export default class Board extends Vue {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped lang="scss">
 </style>

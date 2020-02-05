@@ -83,7 +83,7 @@ export default class GameBoy {
             let ins = model.instance;
             let name = model.name;
 
-            resources.push(ins.resource);
+            ins.resource && resources.push(ins.resource);
             onSetupAction.push(ins.onSetup.bind(ins));
 
             this.ModelMap.set(name, ins);
@@ -122,9 +122,12 @@ export default class GameBoy {
     private playAction(delta: number) {
         this.ModelMap.forEach((model) => {
             model.playAction(delta);
-        })
+        });
     }
 
     private pauseAction(delta: number) {
+        this.ModelMap.forEach((model) => {
+            model.pauseAction(delta);
+        });
     }
 }   
