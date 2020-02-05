@@ -48,7 +48,7 @@ export class Arrow {
             this.sprite.x += b * sinRota - a * sinRota;
             this.sprite.y += b * conRota - a * conRota;
 
-            console.log(this.sprite.x, this.sprite.y, sinRota);
+           
         }
 
 
