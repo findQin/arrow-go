@@ -38,15 +38,15 @@ export class Arrow {
         if(this.sprite) {
             // 旋转
             this.sprite.rotation += Keybroad.right * 0.02 - Keybroad.left * 0.02;
-            let sinRota = Math.sin(-this.sprite.rotation);
-            let conRota = Math.cos(-this.sprite.rotation);
+            let sinRota = - Math.sin(this.sprite.rotation);
+            let conRota = - Math.cos(this.sprite.rotation);
 
             let a = Keybroad.top ? 1 : 0;
             let b = Keybroad.bottom ? 1 : 0;
 
             // 算错了
-            this.sprite.x += b * sinRota - a * sinRota;
-            this.sprite.y += b * conRota - a * conRota;
+            this.sprite.x += b * conRota - a * conRota;
+            this.sprite.y += b * sinRota - a * sinRota;
 
            
         }
