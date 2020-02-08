@@ -1,39 +1,9 @@
 // TODO 继续抽象成基层类 纹理类型
 import { default as Keybroad } from '../lib/keybroad';
 import * as PIXI from 'pixi.js';
+import { BaseModel } from './base.model'
 
-export class Arrow {
-    public sprite : any
-
-    public x: number
-
-    public y: number
-
-    public width: number
-
-    public height: number
-
-    public resource: string | void
-
-    public forward: number = 0
-
-    constructor(position: any) {
-
-        this.x = 0;
-        this.y = 0;
-        this.width = 0;
-        this.height = 0;
-
-        this.resource = require("../assets/sprite/PixelArt.png");
-
-        this.initPosition(position);
-    }
-
-    initPosition(position: any) {
-        this.x = position.x;
-        this.y = position.y;
-    }
-
+export class Arrow extends BaseModel{
     playAction(delta: number) {
         if(this.sprite) {
             // 旋转
@@ -47,10 +17,6 @@ export class Arrow {
             this.sprite.x += b * conRota - a * conRota;
             this.sprite.y += b * sinRota - a * sinRota;           
         }
-
-
-        // this.sprite && (this.sprite.y += Keybroad.bottom * 3 - Keybroad.top * 3);
-        // let forward = 
     }
     
     pauseAction(delta: number) {
@@ -82,6 +48,9 @@ export class Arrow {
         arrow.endFill();
         arrow.x = 180;
         arrow.y = 180;
+
+        arrow.width = arrow.width / 3;
+        arrow.height = arrow.height / 3;
 
         arrow.pivot.set(50 / sqrt3, 50);
         

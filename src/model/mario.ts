@@ -22,13 +22,6 @@ export class Mario {
         this.width = 0;
         this.height = 0;
         this.resource = require("../assets/sprite/PixelArt.png");
-
-        this.initPosition(position);
-    }
-
-    initPosition(position: any) {
-        this.x = position.x;
-        this.y = position.y;
     }
 
     playAction(delta: number) {

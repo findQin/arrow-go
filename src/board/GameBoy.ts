@@ -77,24 +77,33 @@ export default class GameBoy {
     private initLoader() {
         let resources: Array<string> = [];
         let onSetupAction: Array<any> = [];
-        
+        let graphModelSetupAction: Array<any> = [];
 
         modelList.forEach(model => {
             let ins = model.instance;
             let name = model.name;
 
-            ins.resource && resources.push(ins.resource);
-            onSetupAction.push(ins.onSetup.bind(ins));
-
+            if(ins.resource) {
+                ins.resource && resources.push(ins.resource);
+                onSetupAction.push(ins.onSetup.bind(ins));
+            } else{
+                graphModelSetupAction.push(ins.onSetup.bind(ins));
+            }
+            
             this.ModelMap.set(name, ins);
         });
 
-        this.gameboy.loader
+        
+        resources.length > 0 && this.gameboy.loader
             .add(...resources)
             .load((loader, loadedResources) => {
                 onSetupAction.forEach(action => {
-                    action(loader, loadedResources, this.gameboy);
-                })
+                action(loader, loadedResources, this.gameboy);
+            })
+        });
+
+        graphModelSetupAction.length > 0 && graphModelSetupAction.forEach(action => {
+            action(null, null, this.gameboy);
         })
     }
 
